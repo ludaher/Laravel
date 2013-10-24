@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::any('/*', array('before' => 'auth', 'uses' => 'LoginController@index'));
+
+
+
+/*Restful controllers*/
+
+Route::controller('acceso','LoginController');
+Route::controller('usuario','UserController');
+
